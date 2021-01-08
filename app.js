@@ -120,8 +120,10 @@ function displayMatches() {
 			lowestScore = attempts;
 			localStorage.setItem('memorygame', JSON.stringify(lowestScoreObject));
 			displayLowestScore();
-			startRestartButton.className = 'notstarted';
+			// startRestartButton.className = 'notstarted';
 		}
+
+		startRestartButton.className = 'notstarted';
 	}
 }
 
