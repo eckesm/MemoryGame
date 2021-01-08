@@ -233,7 +233,7 @@ function startGame() {
 	}
 	topOfPage.style.border = '1px solid black';
 	document.body.style.backgroundColor = gameBackgroundColor;
-	topOfPage.style.backgroundColor = gameBackgroundColor;
+	topOfPage.style.backgroundColor = selectRandomColor();
 
 	displayLowestScore();
 }
