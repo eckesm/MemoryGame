@@ -15,6 +15,15 @@ body {
 	font-size: 1.5vw;
 }
 
+#hiddenheading {
+	display:flex;
+	align-items: center;
+	position: absolute;
+	z-index: 1;
+	bottom: 5px;
+	width:100%
+}
+
 h1 {
 	/* align-items: center; */
 	width: 100%;
@@ -33,9 +42,9 @@ button.started {
 
 button.notstarted {
 	margin: 10px;
-	width: 36vw;
-	height: 14vw;
-	font-size: 5vw;
+	width: 35vw;
+	height: 15vw;
+	font-size: 4vw;
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -52,22 +61,12 @@ label{
 
 p {
 	margin: 0px 5px;
-	vertical-align: bottom;
 	text-decoration-line: underline;
-	bottom: 0px
 }
 
 #resultcardnumber{
 	text-decoration: none;	
 	font-size: 1vw;	
-}
-
-#hiddenheading {
-	display: flex;
-	align-items: center;
-	position: absolute;
-	z-index: 1;
-	bottom: 5px
 }
 
 #game {
