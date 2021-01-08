@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MRE Memory Game!</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="topofpage">
+      <h1 class="hiddenheading">Memory Game!</h1>  
+      <div id="hiddenheading">
+        <button id="startrestartbutton" onclick="">Start Memory Game</button>
+        <Label class="hiddenheading" for="inputcardnumber">Select number of cards:</label>
+        <input class="hiddenheading" type="range" min="2" max="100" step="2" id="inputcardnumber">
+        <p class="hiddenheading" id="resultcardnumber"></p>
+        <p class="hiddenheading" id="attempts"></p>
+        <p class="hiddenheading" id="matches"></p>
+        <p class="hiddenheading" id="lowestscore"></p>
+      </div>
+    </div>
+    <div id="game">
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
