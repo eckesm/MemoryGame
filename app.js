@@ -104,7 +104,7 @@ function displayAttempts() {
 }
 
 function displayMatches() {
-	matchesP.innerText = `${matches} cards of ${inputCardNumber.value} matched`;
+	matchesP.innerText = `${matches} / ${inputCardNumber.value} matched`;
 
 	if (matches === parseInt(inputCardNumber.value)) {
 		let winAlert = setTimeout(function() {

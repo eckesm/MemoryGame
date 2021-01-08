@@ -21,11 +21,10 @@ body {
 	position: absolute;
 	z-index: 1;
 	bottom: 5px;
-	width:100%
+	width:100%;
 }
 
 h1 {
-	/* align-items: center; */
 	width: 100%;
 	text-align: center;
 	position: fixed;
@@ -41,26 +40,25 @@ button.started {
 }
 
 button.notstarted {
-	margin: 10px;
-	width: 35vw;
-	height: 15vw;
-	font-size: 4vw;
+	width: 250px;
+	height: 250px;
+	font-size: 50px;
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	margin-left: -18vw;
-	margin-top: -7vw;
-	border-radius: 3%;
+	margin-left: -150px;
+	margin-top: -150px;
+	border-radius: 50%;
 	background-color: whitesmoke;
+	border: 1px solid black
 }
 
 label{
 	text-align: right;
-	margin: 0px
 }
 
 p {
-	margin: 0px 5px;
+	margin: 0px 10px;
 	text-decoration-line: underline;
 }
 
