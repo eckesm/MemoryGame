@@ -48,8 +48,7 @@ function createColorArray() {
 
 function selectRandomColor() {
 	return `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(
-		Math.random() * 256
-	)})`;
+		Math.random() * 256)},0.95)`;
 }
 
 // here is a helper function to shuffle an array
