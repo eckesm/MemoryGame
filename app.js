@@ -240,9 +240,6 @@ function startGame() {
 	createColorArray();
 	shuffledColorsArray = shuffle(cardColorArray);
 	document.body.style.backgroundColor = gameBackgroundColor;
-	attemptsP.hidden = true;
-	matchesP.hidden = true;
-	lowestP.hidden = true;
 
 	for (let each of headingElements) {
 		each.hidden = false;

@@ -3,7 +3,7 @@ body {
 	transition: background-color 1000ms;
 }
 
-#cover{
+#cover {
 	position: fixed;
 	height: 100%;
 	width: 100%;
@@ -12,7 +12,7 @@ body {
 	left: 0;
 	top: 0;
 	transition: opacity 2000ms;
-	z-index: 0
+	z-index: 0;
 }
 
 #topofpage {
@@ -40,10 +40,12 @@ body {
 }
 
 h1 {
-	width: 100%;
-	text-align: center;
+	width: 50%;
 	position: fixed;
-	margin: 10px;
+	top: 0px;
+	margin-left: 25%;
+	text-align: center;
+	margin-top: 5px;
 	z-index: 1;
 	font-size: 36px;
 }
@@ -52,6 +54,7 @@ button.started {
 	margin: 10px;
 	background-color: whitesmoke;
 	height: 38px;
+	z-index: 1;
 }
 
 button.notstarted {
@@ -69,8 +72,8 @@ button.notstarted {
 	color: whitesmoke;
 }
 
-#cardnumberelements{
-	display:flex;
+#cardnumberelements {
+	display: flex;
 	/* width: 200px; */
 	align-items: center;
 }
