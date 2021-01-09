@@ -10,11 +10,13 @@
   <body>
     <div id="topofpage">
       <h1 class="hiddenheading">Memory Game!</h1>  
+      <button id="startrestartbutton" onclick="">Start Memory Game</button>
       <div id="hiddenheading">
-        <button id="startrestartbutton" onclick="">Start Memory Game</button>
-        <Label class="hiddenheading" for="inputcardnumber">Select number of cards:</label>
-        <input class="hiddenheading" type="range" min="2" max="100" step="2" id="inputcardnumber">
-        <p class="hiddenheading" id="resultcardnumber"></p>
+        <div id="cardnumberelements">
+          <button id="increasecardnumber" class="hiddenheading">&uarr;</button>
+          <button id="decreasecardnumber" class="hiddenheading">&darr;</button>
+          <p class="hiddenheading" id="resultcardnumber"></p>
+        </div>
         <p class="hiddenheading" id="attempts"></p>
         <p class="hiddenheading" id="matches"></p>
         <p class="hiddenheading" id="lowestscore"></p>

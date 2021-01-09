@@ -20,9 +20,11 @@ let cardColorArray;
 let shuffledColorsArray;
 let colorMapObject;
 let lowestScoreObject = {};
+let inputCardNumber;
 
 const gameContainer = document.getElementById('game');
-const inputCardNumber = document.getElementById('inputcardnumber');
+const increaseCardNumber = document.getElementById('increasecardnumber');
+const decreaseCardNumber = document.getElementById('decreasecardnumber');
 const resultCardNumber = document.getElementById('resultcardnumber');
 const startRestartButton = document.getElementById('startrestartbutton');
 const attemptsP = document.getElementById('attempts');
@@ -37,7 +39,7 @@ function createColorArray() {
 	colorMapObject = {};
 
 	let count = 0;
-	for (let card = 0; card < inputCardNumber.value; card += 2) {
+	for (let card = 0; card < inputCardNumber; card += 2) {
 		count++;
 		cardColorArray.push('cardtype' + count);
 		cardColorArray.push('cardtype' + count);
@@ -48,7 +50,8 @@ function createColorArray() {
 
 function selectRandomColor() {
 	return `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(
-		Math.random() * 256)},0.95)`;
+		Math.random() * 256
+	)})`;
 }
 
 // here is a helper function to shuffle an array
@@ -90,6 +93,7 @@ function createDivsForColors(shuffledColorsArray) {
 		newDiv.addEventListener('click', handleCardClick);
 
 		// append the div to the element with an id of game
+
 		gameContainer.append(newDiv);
 	}
 }
@@ -103,9 +107,9 @@ function displayAttempts() {
 }
 
 function displayMatches() {
-	matchesP.innerText = `${matches} / ${inputCardNumber.value} matched`;
+	matchesP.innerText = `${matches} / ${inputCardNumber} matched`;
 
-	if (matches === parseInt(inputCardNumber.value)) {
+	if (matches === inputCardNumber) {
 		let winAlert = setTimeout(function() {
 			alert('You win!');
 		}, 25);
@@ -115,7 +119,7 @@ function displayMatches() {
 				alert('New lowest score!');
 			}, 25);
 			if (lowestScoreObject == null) lowestScoreObject = {};
-			lowestScoreObject[inputCardNumber.value] = attempts;
+			lowestScoreObject[inputCardNumber] = attempts;
 			lowestScore = attempts;
 			localStorage.setItem('memorygame', JSON.stringify(lowestScoreObject));
 			displayLowestScore();
@@ -128,12 +132,13 @@ function displayMatches() {
 
 function displayLowestScore() {
 	lowestScoreObject = JSON.parse(localStorage.getItem('memorygame'));
+	// debugger
 
 	lowestScore = null;
 	if (lowestScoreObject) {
 		// lowestScore = null;
 		for (let each in lowestScoreObject) {
-			if (each === inputCardNumber.value) {
+			if (parseInt(each) === inputCardNumber) {
 				lowestScore = lowestScoreObject[each];
 			}
 		}
@@ -142,7 +147,7 @@ function displayLowestScore() {
 	if (lowestScore == null) {
 		lowestP.innerText = 'No lowest score recorded.';
 	} else {
-		lowestP.innerText = `Lowest score for ${inputCardNumber.value} cards: ${lowestScore}`;
+		lowestP.innerText = `Lowest score for ${inputCardNumber} cards: ${lowestScore}`;
 	}
 }
 
@@ -153,7 +158,7 @@ function handleCardClick(event) {
 	// prevent selecting additional cards during no match delay
 	if (selection1 !== 0 && selection2 !== 0) return;
 
-	console.log('you just clicked', event.target);
+	// console.log('you just clicked', event.target);
 	const cardClass = event.target.className;
 
 	if (event.target.className === 'matched') {
@@ -195,15 +200,25 @@ function handleCardClick(event) {
 }
 
 // when the DOM loads
-inputCardNumber.value = defaultCardNumber;
+inputCardNumber = defaultCardNumber;
 resultCardNumber.innerText = `${defaultCardNumber} cards`;
 document.body.style.backgroundColor = selectRandomColor();
 startRestartButton.className = 'notstarted';
 for (let each of headingElements) {
 	each.hidden = true;
 }
-inputCardNumber.addEventListener('change', function() {
-	resultCardNumber.innerText = `${inputCardNumber.value} cards`;
+
+increaseCardNumber.addEventListener('click', function() {
+	inputCardNumber += 2;
+	resultCardNumber.innerText = `${inputCardNumber} cards`;
+	startGame();
+});
+
+decreaseCardNumber.addEventListener('click', function() {
+	if (inputCardNumber >= 6) {
+		inputCardNumber -= 2;
+	}
+	resultCardNumber.innerText = `${inputCardNumber} cards`;
 	startGame();
 });
 
@@ -224,15 +239,20 @@ function startGame() {
 	displayMatches();
 	createColorArray();
 	shuffledColorsArray = shuffle(cardColorArray);
-	createDivsForColors(shuffledColorsArray);
-	startRestartButton.className = 'started';
-	startRestartButton.innerText = 'Restart Game';
+	document.body.style.backgroundColor = gameBackgroundColor;
+	attemptsP.hidden = true;
+	matchesP.hidden = true;
+	lowestP.hidden = true;
+
 	for (let each of headingElements) {
 		each.hidden = false;
 	}
-	topOfPage.style.border = '1px solid black';
-	document.body.style.backgroundColor = gameBackgroundColor;
-	topOfPage.style.backgroundColor = selectRandomColor();
 
+	startRestartButton.hidden = false;
+	startRestartButton.className = 'started';
+	startRestartButton.innerText = 'Restart Game';
+	topOfPage.style.border = '1px solid black';
+	topOfPage.style.backgroundColor = selectRandomColor();
+	createDivsForColors(shuffledColorsArray);
 	displayLowestScore();
 }
